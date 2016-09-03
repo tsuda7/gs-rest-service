@@ -49,6 +49,14 @@ public class GreetingControllerTests {
 	}
 
 	@Test
+	public void rootShouldReturn404() throws Exception {
+
+		this.mockMvc.perform(get("/"))
+				.andDo(print())
+				.andExpect(status().isNotFound());
+	}
+
+	@Test
 	public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
 
 		this.mockMvc.perform(get("/greeting"))
